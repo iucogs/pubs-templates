@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Citations</title>
+  <!-- Stylesheet Imports -->
+  <link rel="stylesheet" href="lib/css/bootstrap.min.css" />
+
+  <!-- Javascript Imports -->
+  <script src="lib/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+  <script src="lib/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="lib/js/mustache.js" type="text/javascript"></script>
+ </head>
+<body>
+
+<!-- MLA Mustache template -->
+<script id="mla_template" type="text/template">
+<tr><td>
+<!-- pubtype book -->
+{{#pubtypeBook}}
+{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
+{{#title}} <i>{{title}}.</i> {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+<!-- might need location format? -->
+{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+Print.
+{{/pubtypeBook}}
+<!-- pubtype article -->
+{{#pubtypeArticle}}
+{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
+{{#title}} "{{title}}."{{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+{{#journal}} <i>{{journal}}</i>{{/journal}}{{^journal}} <b>[UNKNOWN JOURNAL].</b>{{/journal}}
+{{#volume}} {{volume}}{{#number}}.{{number}}{{/number}}{{/volume}}{{^volume}} <b>[UNKNOWN VOLUME]</b>{{/volume}}
+{{#year}} ({{year}}): {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{#pages}}{{pages}}.{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+Print.
+{{/pubtypeArticle}}
+<!-- pubtype inbook -->
+<b>
+{{#pubtypeInbook}}
+{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
+{{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+{{#booktitle}} <i>{{booktitle}}</i>. {{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
+{{#editor}} {{editor}},{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR],</b> {{/editor}}
+{{/pubtypeInbook}}
+</b>
+</td></tr>
+</script>
+
+<!-- APA Mustache template -->
+<script id="apa_template" type="text/template">
+<tr><td>
+{{#pubtypeUnknown}}
+{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+{{#editor}} In {{apaEds}},{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR],</b> {{/editor}}
+{{#booktitle}} <i>{{booktitle}} </i>{{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
+{{#pages}}(pp. {{pages}}).{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+{{/pubtypeUnknown}}
+<!-- pubtype book -->
+{{#pubtypeBook}}
+{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
+{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
+{{#title}}<i>{{title}}</i>. {{/title}}{{^title}} <b>[UNKNOWN TITLE]. </b>{{/title}}
+{{#location}}{{location}}: {{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}}{{publisher}}.{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+{{/pubtypeBook}}
+<!-- pubtype article -->
+{{#pubtypeArticle}}
+{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}} 
+{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{#title}}{{title}}.{{/title}}{{^title}}<b>[UNKNOWN TITLE]. </b>{{/title}}
+{{#journal}} <i>{{journal}},{{/journal}}{{^journal}} <b>[UNKNOWN JOURNAL]</b> {{/journal}}
+{{#volume}} {{volume}}</i>{{#number}}({{number}}){{/number}}, {{/volume}}{{^volume}}<b>[UNKNOWN VOLUME]</b> {{/volume}}
+{{#pages}} {{pages}}{{/pages}}.{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+{{/pubtypeArticle}}
+<!-- pubtype inbook -->
+{{#pubtypeInbook}}
+{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+{{#editor}} In {{apaEds}},{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR],</b> {{/editor}}
+{{#booktitle}} <i>{{booktitle}} </i>{{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
+{{#pages}}(pp. {{pages}}).{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+{{/pubtypeInbook}}
+<!-- pubtype translated_book -->
+{{#pubtypeTransBook}}
+{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{#title}}<i>{{title}}</i>. {{/title}}{{^title}}<b>[UNKNOWN TITLE].</b> {{/title}}
+{{#translator}}({{apaTrans}}, Trans.){{/translator}}{{^translator}}<b>[UNKNOWN TRANSLATOR].</b>{{/translator}}
+{{#location}} {{location}}: {{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}}{{publisher}}.{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER].{{/publisher}}</b>
+{{/pubtypeTransBook}}
+<!-- pubtype edited_book -->
+<!-- Need to fix for no author books with only 1 editor? -->
+{{#pubtypeEditedBook}}
+{{#authorKnown}}{{apaAuthors}} (Eds.). {{/authorKnown}}{{^authorKnown}}[UNKNOWN AUTHOR]{{/authorKnown}}
+{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
+{{#title}}<i>{{title}}</i>. {{/title}}{{^title}} <b>[UNKNOWN TITLE]. </b>{{/title}}
+{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+{{/pubtypeEditedBook}}
+<!-- pubtype web_published -->
+{{#pubtypeWebPublished}}
+{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+{{#title}} <i>{{title}}.</i> {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+Retrieved from: {{#url}}{{url}}{{/url}}{{^url}}[UNKNOWN URL]{{/url}}
+{{/pubtypeWebPublished}}
+<!-- pubtype proceedings -->
+{{#pubtypeProceedings}}
+{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
+{{/pubtypeProceedings}}
+<!-- pubtype misc -->
+{{#pubtypeMisc}}
+{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
+{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+{{/pubtypeMisc}}
+</td></tr>
+</script>
+
+<!-- Mustache template is rendered in this table -->
+<table border="1" id="citation_table">
+<script src="template_logic.js" type="text/javascript"></script>
+</table>
+
+</body>
+</html>
