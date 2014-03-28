@@ -128,10 +128,10 @@ function apaEditorFormat(editorsStr) {
 	var formattedEdName = "";
 	var alphaArray = [];
 	//split editors string into an array
-	edSplit = editorsStr.split(";");
-	//creates a new array which switches first/last names in edSplit in order to alphabetize 
-	for (var i = 0; i < edSplit.length; i++) {
-		newSplit = edSplit[i].split(",");
+	var edArray = editorsStr.split(";");
+	//creates a new array which switches first/last names in edArray in order to alphabetize 
+	for (var i = 0; i < edArray.length; i++) {
+		newSplit = edArray[i].split(",");
 		newElem = newSplit[1] + "," + newSplit[0];
 		alphaArray.push(newElem);
 		alphaArray.sort();
@@ -140,19 +140,23 @@ function apaEditorFormat(editorsStr) {
 	for (var i = 0; i < alphaArray.length; i++) {
 		var edNameSplit = alphaArray[i].split(",");
 		var initials = edNameSplit[0];
-		//check to make sure initials is not full first name
-		if (initials[2] != ".") {
+		var edLastName = edNameSplit[1];
+		//accounts for cases where there is no comma between last and first name
+		if (initials === "undefined" || initials === "") {
+			initials = "";
+		}
+		//check to make sure initials is not full first name, and if it is full first name grab initial
+		else if (initials[2] != ".") {
 			initials = initials[1] + ".";
 		} 
-		var edLastName = edNameSplit[1];
 		//citation with single editor
-		if (edSplit.length === 1) {
+		if (edArray.length === 1) {
 			formattedEdName += initials + " " + edLastName + " (Ed.)";
 		}
 		//citation with more than 1 editor
 		else {
 			//adds APA styling
-			if (i === edSplit.length - 1) {
+			if (i === edArray.length - 1) {
 				formattedEdName += " & " + initials + " " + edLastName + " (Eds.)";	
 			}
 			else {
@@ -164,9 +168,45 @@ function apaEditorFormat(editorsStr) {
 	return formattedEdName;
 }
 
-//formats editors to mla style
+
+//formats editors to mla style (Ed. First Name, Last Name)
+//what about editor string with no ";" ?
 function mlaEditorFormat(editorsStr) {
-	//do something
+	var formattedEdName = "";
+	//split editors string into an array where each element is one name
+	var edArray = editorsStr.split(";");
+	//mla doesn't need alphabetized editors ? 
+	//loop through edArray
+	for (var i = 0; i < edArray.length; i++) {
+		//split each string in array into an array containing editor's first/last names
+		var edNameSplit = edArray[i].split(",");
+		console.log(edNameSplit);
+		//console.log(edNameSplit);
+		var firstName = edNameSplit[1];
+		var lastName = edNameSplit[0];
+		//acounts for cases where there is no comma between last and first name
+		if (firstName === undefined) {
+			firstName = "";
+		}
+		//citation with single editor
+		if (edArray.length === 1) {
+			formattedEdName += "Ed." + firstName + " " + lastName;
+		}
+		//citation with more that 1 editor
+		else {
+			//add Eds.
+			if (i === 0) {
+				formattedEdName += "Eds. ";
+			}
+			if (i === edArray.length - 1) {
+				formattedEdName += " and " + firstName + " " + lastName;
+			}
+			else {
+				formattedEdName += firstName + " " + lastName + ", ";
+			}
+		}
+	}
+	return formattedEdName;
 }
 
 //replaces 'and' with '&' in translator string
@@ -249,5 +289,5 @@ function citationTable(template, data) {
 
 var apa_template = $('#apa_template').html();
 var mla_template = $('#mla_template').html();
-citationTable(mla_template, data4);
+citationTable(apa_template, data4);
 

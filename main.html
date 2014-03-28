@@ -15,6 +15,17 @@
 <!-- MLA Mustache template -->
 <script id="mla_template" type="text/template">
 <tr><td>
+<!-- pubtype Unknown -->
+{{#pubtypeUnknown}}
+{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
+{{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+{{#booktitle}} <i>{{booktitle}}</i>. {{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
+{{#editor}} {{mlaEds}}.{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR].</b> {{/editor}}
+{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
+{{/pubtypeUnknown}}
 <!-- pubtype book -->
 {{#pubtypeBook}}
 {{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
@@ -41,7 +52,13 @@ Print.
 {{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
 {{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
 {{#booktitle}} <i>{{booktitle}}</i>. {{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
-{{#editor}} {{editor}},{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR],</b> {{/editor}}
+{{#editor}} {{mlaEds}}.{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR].</b> {{/editor}}
+<!-- location edit? -->
+{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
+Print.
 {{/pubtypeInbook}}
 </b>
 </td></tr>
