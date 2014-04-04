@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <title>Citations</title>
+  <meta charset="utf-8"/>
   <!-- Stylesheet Imports -->
   <link rel="stylesheet" href="lib/css/bootstrap.min.css" />
 
@@ -26,6 +27,7 @@
 {{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
 {{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
 {{/pubtypeUnknown}}
+
 <!-- pubtype book -->
 {{#pubtypeBook}}
 {{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
@@ -36,6 +38,7 @@
 {{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
 Print.
 {{/pubtypeBook}}
+
 <!-- pubtype article -->
 {{#pubtypeArticle}}
 {{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
@@ -46,8 +49,8 @@ Print.
 {{#pages}}{{pages}}.{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
 Print.
 {{/pubtypeArticle}}
+
 <!-- pubtype inbook -->
-<b>
 {{#pubtypeInbook}}
 {{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
 {{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
@@ -60,7 +63,36 @@ Print.
 {{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
 Print.
 {{/pubtypeInbook}}
-</b>
+
+<!-- pubtype translated_book -->
+<!-- might need transformat for mla -->
+{{#pubtypeTransBook}}
+{{#authorKnown}} {{mlaAuthors}}{{/authorKnown}}{{^authorKnown}} <b>[UNKNOWN EDITOR].</b>{{/authorKnown}}
+{{#title}} <i>{{title}}</i>.{{/title}}{{^title}} <b>[UNKNOWN TITLE]</b>.{{/title}}
+{{#translator}} Trans. {{translator}}.{{/translator}}{{^translator}} <b>[UNKNOWN TRANSLATOR]</b>{{/translator}}
+{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
+{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{/pubtypeTransBook}}
+
+<!-- pubtype edited_book: no authors, just editors (editors are stored in author array, however) -->
+
+{{#pubtypeEditedBook}}
+{{#title}} <i>{{title}}</i>.{{/title}}{{^title}} <b>[UNKNOWN TITLE]</b>.{{/title}}
+{{#authorKnown}} {{mlaAuthors}}{{/authorKnown}}{{^authorKnown}} <b>[UNKNOWN EDITOR].</b>{{/authorKnown}}
+{{#location}} {{location}}: {{/location}}{{^location}} <b>[UNKNOWN LOCATIO]:</b> {{/location}}
+{{#publisher}}{{publisher}},{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+{{/pubtypeEditedBook}}
+
+<!-- pubtype web_published -->
+
+
+<!-- pubtype proceedings -->
+
+
+<!-- pubtype misc -->
+
 </td></tr>
 </script>
 
@@ -77,6 +109,7 @@ Print.
 {{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
 {{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
 {{/pubtypeUnknown}}
+
 <!-- pubtype book -->
 {{#pubtypeBook}}
 {{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
@@ -85,6 +118,7 @@ Print.
 {{#location}}{{location}}: {{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
 {{#publisher}}{{publisher}}.{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
 {{/pubtypeBook}}
+
 <!-- pubtype article -->
 {{#pubtypeArticle}}
 {{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}} 
@@ -94,6 +128,7 @@ Print.
 {{#volume}} {{volume}}</i>{{#number}}({{number}}){{/number}}, {{/volume}}{{^volume}}<b>[UNKNOWN VOLUME]</b> {{/volume}}
 {{#pages}} {{pages}}{{/pages}}.{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
 {{/pubtypeArticle}}
+
 <!-- pubtype inbook -->
 {{#pubtypeInbook}}
 {{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
@@ -105,6 +140,7 @@ Print.
 {{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
 {{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
 {{/pubtypeInbook}}
+
 <!-- pubtype translated_book -->
 {{#pubtypeTransBook}}
 {{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
@@ -114,6 +150,7 @@ Print.
 {{#location}} {{location}}: {{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
 {{#publisher}}{{publisher}}.{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER].{{/publisher}}</b>
 {{/pubtypeTransBook}}
+
 <!-- pubtype edited_book -->
 <!-- Need to fix for no author books with only 1 editor? -->
 {{#pubtypeEditedBook}}
@@ -123,6 +160,7 @@ Print.
 {{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
 {{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
 {{/pubtypeEditedBook}}
+
 <!-- pubtype web_published -->
 {{#pubtypeWebPublished}}
 {{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
@@ -130,11 +168,13 @@ Print.
 {{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
 Retrieved from: {{#url}}{{url}}{{/url}}{{^url}}[UNKNOWN URL]{{/url}}
 {{/pubtypeWebPublished}}
+
 <!-- pubtype proceedings -->
 {{#pubtypeProceedings}}
 {{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
 {{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
 {{/pubtypeProceedings}}
+
 <!-- pubtype misc -->
 {{#pubtypeMisc}}
 {{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
