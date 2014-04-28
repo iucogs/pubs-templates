@@ -15,173 +15,311 @@
 
 <!-- MLA Mustache template -->
 <script id="mla_template" type="text/template">
-<tr><td>
-<!-- pubtype Unknown -->
-{{#pubtypeUnknown}}
-{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
-{{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
-{{#booktitle}} <i>{{booktitle}}</i>. {{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
-{{#editor}} {{mlaEds}}.{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR].</b> {{/editor}}
-{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
-{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
-{{/pubtypeUnknown}}
+	<tr><td>
+	<!-- pubtype Unknown -->
+	{{#pubtypeUnknown}}
+	{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
+	{{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#booktitle}} <i>{{booktitle}}</i>. {{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
+	{{#editor}} {{mlaEds}}.{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR].</b> {{/editor}}
+	{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+	{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
+	{{/pubtypeUnknown}}
 
-<!-- pubtype book -->
-{{#pubtypeBook}}
-{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
-{{#title}} <i>{{title}}.</i> {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
-<!-- might need location format? -->
-{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
-{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-Print.
-{{/pubtypeBook}}
+	<!-- pubtype book -->
+	{{#pubtypeBook}}
+	{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
+	{{#title}} <i>{{title}}.</i> {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	<!-- might need location format? -->
+	{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+	{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	Print.
+	{{/pubtypeBook}}
 
-<!-- pubtype article -->
-{{#pubtypeArticle}}
-{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
-{{#title}} "{{title}}."{{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
-{{#journal}} <i>{{journal}}</i>{{/journal}}{{^journal}} <b>[UNKNOWN JOURNAL].</b>{{/journal}}
-{{#volume}} {{volume}}{{#number}}.{{number}}{{/number}}{{/volume}}{{^volume}} <b>[UNKNOWN VOLUME]</b>{{/volume}}
-{{#year}} ({{year}}): {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{#pages}}{{pages}}.{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
-Print.
-{{/pubtypeArticle}}
+	<!-- pubtype article -->
+	{{#pubtypeArticle}}
+	{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
+	{{#title}} "{{title}}."{{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#journal}} <i>{{journal}}</i>{{/journal}}{{^journal}} <b>[UNKNOWN JOURNAL].</b>{{/journal}}
+	{{#volume}} {{volume}}{{#number}}.{{number}}{{/number}}{{/volume}}{{^volume}} <b>[UNKNOWN VOLUME]</b>{{/volume}}
+	{{#year}} ({{year}}): {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#pages}}{{pages}}.{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+	Print.
+	{{/pubtypeArticle}}
 
-<!-- pubtype inbook -->
-{{#pubtypeInbook}}
-{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
-{{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
-{{#booktitle}} <i>{{booktitle}}</i>. {{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
-{{#editor}} {{mlaEds}}.{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR].</b> {{/editor}}
-<!-- location edit? -->
-{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
-{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
-Print.
-{{/pubtypeInbook}}
+	<!-- pubtype inbook -->
+	{{#pubtypeInbook}}
+	{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR]</b>{{/authorKnown}}
+	{{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#booktitle}} <i>{{booktitle}}</i>. {{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
+	{{#editor}} {{mlaEds}}.{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR].</b> {{/editor}}
+	<!-- location edit? -->
+	{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+	{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
+	Print.
+	{{/pubtypeInbook}}
 
-<!-- pubtype translated_book -->
-<!-- might need transformat for mla -->
-{{#pubtypeTransBook}}
-{{#authorKnown}} {{mlaAuthors}}{{/authorKnown}}{{^authorKnown}} <b>[UNKNOWN EDITOR].</b>{{/authorKnown}}
-{{#title}} <i>{{title}}</i>.{{/title}}{{^title}} <b>[UNKNOWN TITLE]</b>.{{/title}}
-{{#translator}} Trans. {{translator}}.{{/translator}}{{^translator}} <b>[UNKNOWN TRANSLATOR]</b>{{/translator}}
-{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
-{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{/pubtypeTransBook}}
+	<!-- pubtype translated_book -->
+	<!-- might need transformat for mla -->
+	{{#pubtypeTransBook}}
+	{{#authorKnown}} {{mlaAuthors}}{{/authorKnown}}{{^authorKnown}} <b>[UNKNOWN EDITOR].</b>{{/authorKnown}}
+	{{#title}} <i>{{title}}</i>.{{/title}}{{^title}} <b>[UNKNOWN TITLE]</b>.{{/title}}
+	{{#translator}} Trans. {{translator}}.{{/translator}}{{^translator}} <b>[UNKNOWN TRANSLATOR]</b>{{/translator}}
+	{{#location}}{{location}}:{{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}},{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+	{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{/pubtypeTransBook}}
 
-<!-- pubtype edited_book: no authors, just editors (editors are stored in author array, however) -->
+	<!-- pubtype edited_book: no authors, just editors (editors are stored in author array, however) -->
+	{{#pubtypeEditedBook}}
+	{{#title}} <i>{{title}}</i>.{{/title}}{{^title}} <b>[UNKNOWN TITLE]</b>.{{/title}}
+	{{#authorKnown}} {{mlaAuthors}}{{/authorKnown}}{{^authorKnown}} <b>[UNKNOWN EDITOR].</b>{{/authorKnown}}
+	{{#location}} {{location}}: {{/location}}{{^location}} <b>[UNKNOWN LOCATIO]:</b> {{/location}}
+	{{#publisher}}{{publisher}},{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
+	{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{/pubtypeEditedBook}}
 
-{{#pubtypeEditedBook}}
-{{#title}} <i>{{title}}</i>.{{/title}}{{^title}} <b>[UNKNOWN TITLE]</b>.{{/title}}
-{{#authorKnown}} {{mlaAuthors}}{{/authorKnown}}{{^authorKnown}} <b>[UNKNOWN EDITOR].</b>{{/authorKnown}}
-{{#location}} {{location}}: {{/location}}{{^location}} <b>[UNKNOWN LOCATIO]:</b> {{/location}}
-{{#publisher}}{{publisher}},{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER],</b>{{/publisher}}
-{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{/pubtypeEditedBook}}
+	<!-- pubtype web_published -->
+	{{#pubtypeWebPublished}}
+	{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
+	{{#title}}<i>{{title}}.</i> {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	Retrieved from: {{#url}}{{url}}{{/url}}{{^url}}[UNKNOWN URL]{{/url}}
+	{{/pubtypeWebPublished}}
 
-<!-- pubtype web_published -->
+	<!-- pubtype proceedings -->
+	{{#pubtypeProceedings}}
+	{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
+	{{#title}}"{{title}}." {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#editor}} {{mlaEds}}.{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR].</b> {{/editor}}
+	{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+	{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#pages}}{{pages}}. {{/pages}}{{^pages}}<b>[UNKNOWN PAGES]. </b>{{/pages}}
+	{{/pubtypeProceedings}}
 
+	<!-- pubtype misc -->
+	{{#pubtypeMisc}}
+	{{#authorKnown}}{{mlaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
+	{{#title}}<i>{{title}}.</i> {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#year}} {{year}}. {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{/pubtypeMisc}}
 
-<!-- pubtype proceedings -->
-
-
-<!-- pubtype misc -->
-
-</td></tr>
+	</td></tr>
 </script>
 
 <!-- APA Mustache template -->
 <script id="apa_template" type="text/template">
-<tr><td>
-{{#pubtypeUnknown}}
-{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
-{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
-{{#editor}} In {{apaEds}},{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR],</b> {{/editor}}
-{{#booktitle}} <i>{{booktitle}} </i>{{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
-{{#pages}}(pp. {{pages}}).{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
-{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
-{{/pubtypeUnknown}}
+	<tr><td>
 
-<!-- pubtype book -->
-{{#pubtypeBook}}
-{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
-{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
-{{#title}}<i>{{title}}</i>. {{/title}}{{^title}} <b>[UNKNOWN TITLE]. </b>{{/title}}
-{{#location}}{{location}}: {{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}}{{publisher}}.{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
-{{/pubtypeBook}}
+	<!-- pubtype unknown -->
+	{{#pubtypeUnknown}}
+	{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+	{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#editor}} In {{apaEds}},{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR],</b> {{/editor}}
+	{{#booktitle}} <i>{{booktitle}} </i>{{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
+	{{#pages}}(pp. {{pages}}).{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+	{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+	{{/pubtypeUnknown}}
 
-<!-- pubtype article -->
-{{#pubtypeArticle}}
-{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}} 
-{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{#title}}{{title}}.{{/title}}{{^title}}<b>[UNKNOWN TITLE]. </b>{{/title}}
-{{#journal}} <i>{{journal}},{{/journal}}{{^journal}} <b>[UNKNOWN JOURNAL]</b> {{/journal}}
-{{#volume}} {{volume}}</i>{{#number}}({{number}}){{/number}}, {{/volume}}{{^volume}}<b>[UNKNOWN VOLUME]</b> {{/volume}}
-{{#pages}} {{pages}}{{/pages}}.{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
-{{/pubtypeArticle}}
+	<!-- pubtype book -->
+	{{#pubtypeBook}}
+	{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
+	{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
+	{{#title}}<i>{{title}}</i>. {{/title}}{{^title}} <b>[UNKNOWN TITLE]. </b>{{/title}}
+	{{#location}}{{location}}: {{/location}}{{^location}}<b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}}{{publisher}}.{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+	{{/pubtypeBook}}
 
-<!-- pubtype inbook -->
-{{#pubtypeInbook}}
-{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
-{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
-{{#editor}} In {{apaEds}},{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR],</b> {{/editor}}
-{{#booktitle}} <i>{{booktitle}} </i>{{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
-{{#pages}}(pp. {{pages}}).{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
-{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
-{{/pubtypeInbook}}
+	<!-- pubtype article -->
+	{{#pubtypeArticle}}
+	{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}} 
+	{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#title}}{{title}}.{{/title}}{{^title}}<b>[UNKNOWN TITLE]. </b>{{/title}}
+	{{#journal}} <i>{{journal}},{{/journal}}{{^journal}} <b>[UNKNOWN JOURNAL]</b> {{/journal}}
+	{{#volume}} {{volume}}</i>{{#number}}({{number}}){{/number}}, {{/volume}}{{^volume}}<b>[UNKNOWN VOLUME]</b> {{/volume}}
+	{{#pages}} {{pages}}{{/pages}}.{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+	{{/pubtypeArticle}}
 
-<!-- pubtype translated_book -->
-{{#pubtypeTransBook}}
-{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
-{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{#title}}<i>{{title}}</i>. {{/title}}{{^title}}<b>[UNKNOWN TITLE].</b> {{/title}}
-{{#translator}}({{apaTrans}}, Trans.){{/translator}}{{^translator}}<b>[UNKNOWN TRANSLATOR].</b>{{/translator}}
-{{#location}} {{location}}: {{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}}{{publisher}}.{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER].{{/publisher}}</b>
-{{/pubtypeTransBook}}
+	<!-- pubtype inbook -->
+	{{#pubtypeInbook}}
+	{{#authorKnown}}{{apaAuthors}}{{/authorKnown}} {{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+	{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#editor}} In {{apaEds}},{{/editor}}{{^editor}}<b>[UNKNOWN EDITOR],</b> {{/editor}}
+	{{#booktitle}} <i>{{booktitle}} </i>{{/booktitle}}{{^booktitle}}<b>[UNKNOWN BOOKTITLE] </b>{{/booktitle}}
+	{{#pages}}(pp. {{pages}}).{{/pages}}{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+	{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+	{{/pubtypeInbook}}
 
-<!-- pubtype edited_book -->
-<!-- Need to fix for no author books with only 1 editor? -->
-{{#pubtypeEditedBook}}
-{{#authorKnown}}{{apaAuthors}} (Eds.). {{/authorKnown}}{{^authorKnown}}[UNKNOWN AUTHOR]{{/authorKnown}}
-{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
-{{#title}}<i>{{title}}</i>. {{/title}}{{^title}} <b>[UNKNOWN TITLE]. </b>{{/title}}
-{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
-{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
-{{/pubtypeEditedBook}}
+	<!-- pubtype translated_book -->
+	{{#pubtypeTransBook}}
+	{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+	{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#title}}<i>{{title}}</i>. {{/title}}{{^title}}<b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#translator}}({{apaTrans}}, Trans.){{/translator}}{{^translator}}<b>[UNKNOWN TRANSLATOR].</b>{{/translator}}
+	{{#location}} {{location}}: {{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}}{{publisher}}.{{/publisher}}{{^publisher}}<b>[UNKNOWN PUBLISHER].{{/publisher}}</b>
+	{{/pubtypeTransBook}}
 
-<!-- pubtype web_published -->
-{{#pubtypeWebPublished}}
-{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
-{{#title}} <i>{{title}}.</i> {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
-{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-Retrieved from: {{#url}}{{url}}{{/url}}{{^url}}[UNKNOWN URL]{{/url}}
-{{/pubtypeWebPublished}}
+	<!-- pubtype edited_book -->
+	{{#pubtypeEditedBook}}
+	{{#authorKnown}}{{apaAuthors}} {{/authorKnown}}{{^authorKnown}}[UNKNOWN AUTHOR]{{/authorKnown}}
+	{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
+	{{#title}}<i>{{title}}</i>. {{/title}}{{^title}} <b>[UNKNOWN TITLE]. </b>{{/title}}
+	{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+	{{/pubtypeEditedBook}}
+	
+	<!-- pubtype web_published -->
+	{{#pubtypeWebPublished}}
+	{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+	{{#title}} <i>{{title}}.</i> {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	Retrieved from: {{#url}}{{url}}{{/url}}{{^url}}[UNKNOWN URL]{{/url}}
+	{{/pubtypeWebPublished}}
 
-<!-- pubtype proceedings -->
-{{#pubtypeProceedings}}
-{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
-{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
-{{/pubtypeProceedings}}
+	<!-- pubtype proceedings -->
+	<b>{{#pubtypeProceedings}}
+	{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b> {{/authorKnown}}
+	{{#year}} ({{year}}). {{/year}}{{^year}}<b>[UNKNOWN YEAR]. </b>{{/year}}
+	{{#title}}<i>{{title}}</i>. {{/title}}{{^title}} <b>[UNKNOWN TITLE]. </b>{{/title}}
+	{{#pages}} {{pages}}{{/pages}}.{{^pages}}<b>[UNKNOWN PAGES].</b>{{/pages}}
+	{{#location}} {{location}}:{{/location}}{{^location}} <b>[UNKNOWN LOCATION]:</b> {{/location}}
+	{{#publisher}} {{publisher}}.{{/publisher}}{{^publisher}} <b>[UNKNOWN PUBLISHER].</b>{{/publisher}}
+	{{/pubtypeProceedings}}</b>
 
-<!-- pubtype misc -->
-{{#pubtypeMisc}}
-{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
-{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
-{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
-{{/pubtypeMisc}}
-</td></tr>
+	<!-- pubtype misc -->
+	{{#pubtypeMisc}}
+	{{#authorKnown}}{{apaAuthors}}{{/authorKnown}}{{^authorKnown}}<b>[UNKNOWN AUTHOR].</b>{{/authorKnown}}
+	{{#year}} ({{year}}). {{/year}}{{^year}} <b>[UNKNOWN YEAR].</b> {{/year}}
+	{{#title}}{{title}}. {{/title}}{{^title}} <b>[UNKNOWN TITLE].</b> {{/title}}
+	{{/pubtypeMisc}}
+	</td></tr>
+</script>
+
+<!-- Bibtex Mustache template -->
+<script id="bib_template" type="text/template">
+	<tr><td>
+	
+	<!-- pubtype unkwnown -->
+	{{#pubtypeUnknown}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#booktitle}}booktitle = "{{booktitle}}",<br>{{/booktitle}}{{^booktitle}}booktitle = " ",<br>{{/booktitle}}
+	{{#pages}}pages = "{{pages}}"<br>{{/pages}}{{^pages}}pages = " "<br>{{/pages}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#editor}}editor = "{{editor}}",<br>{{/editor}}{{^editor}}editor = " ",<br>{{/editor}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeUnknown}}
+
+	<!-- pubtype book -->
+	{{#pubtypeBook}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeBook}}
+
+	<!-- pubtype article -->
+	<!-- probably going to need another author format -->
+	{{#pubtypeArticle}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#journal}}journal = "{{journal}}",<br>{{/journal}}{{^journal}}journal = " ",<br>{{/journal}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#volume}}volume = "{{volume}}",<br>{{/volume}}{{^volume}}volume = " ",<br>{{/volume}}
+	{{#pages}}pages = "{{pages}}"<br>{{/pages}}{{^pages}}pages = " "<br>{{/pages}}
+	}
+	{{/pubtypeArticle}}
+
+	<!-- pubtype inbook -->
+	{{#pubtypeInbook}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#booktitle}}booktitle = "{{booktitle}}",<br>{{/booktitle}}{{^booktitle}}booktitle = " ",<br>{{/booktitle}}
+	{{#pages}}pages = "{{pages}}"<br>{{/pages}}{{^pages}}pages = " "<br>{{/pages}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#editor}}editor = "{{editor}}",<br>{{/editor}}{{^editor}}editor = " ",<br>{{/editor}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeInbook}}
+	
+	<!-- pubtype translated_book -->
+	{{#pubtypeTransBook}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}. Trans. {{translator}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeTransBook}}
+
+	<!-- pubtype edited_book -->
+	{{#pubtypeEditedBook}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}editor = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}editor = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeEditedBook}}
+
+	<!-- pubtype web_published -->
+	{{#pubtypeWebPublished}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#url}}url = "{{url}}"<br>{{/url}}{{^url}}url = " ",<br>{{/url}}
+	}
+	{{/pubtypeWebPublished}}
+
+	<!-- pubtype proceedings -->
+	{{#pubtypeProceedings}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#editor}}editor = "{{editor}}",<br>{{/editor}}{{^editor}}editor = " ",<br>{{/editor}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#pages}}pages = "{{pages}}"<br>{{/pages}}{{^pages}}pages = " "<br>{{/pages}}
+	{{/pubtypeProceedings}}
+
+	<!-- pubtype misc -->
+	{{#pubtypeMisc}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{/pubtypeMisc}}
+
+	</td></tr>
+</script>
+
+<script id="bib_template" type="text/template">
+	<td><tr>
+	</td></tr>
 </script>
 
 <!-- Mustache template is rendered in this table -->

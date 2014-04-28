@@ -20,8 +20,7 @@ function apaAuthorFormat(authorsArray) {
 		//split into array containing first name and initials if they exist
 		var initialsArr = fullNameArr[1].split(" ");
 		//if initials exist, create midInitials variable
-		if (initialsArr[2]) 
-			{
+		if (initialsArr[2]) {
 			var midInitials = initialsArr[2];
 			//account for full name in data
 			if (midInitials[1] != ".") 
@@ -64,6 +63,8 @@ function apaAuthorFormat(authorsArray) {
 		}	
 		//format for citations with more than 1 author
 		else {
+			//flag for multiple authors, to be used with edited book citation (since the editors are stored in authorsArray) 
+			var multipleAuthors = true;
 			//adds & before formattedAuthor if it is the last element in array
 			if (i === (authorsArray.length - 1)) {
 				//removes firstInitial if author does not have one
@@ -97,7 +98,7 @@ function apaAuthorFormat(authorsArray) {
 		}
 		//need format for citation with 7+ authors
 	}
-	return formattedAuthor;
+	return [formattedAuthor, multipleAuthors];
 }	
 
 //mlaAuthorFormat formats author array for mla style
@@ -106,6 +107,8 @@ function mlaAuthorFormat(authorsArray) {
 	var formattedAuthor = authorsArray[0];
 	//each subsequent name needs to be first name, last name
 	if (authorsArray.length > 1) {
+		//flag for multiple authors, to be used with edited book citation (since the editors are stored in authorsArray) 
+		var multipleAuthors = true; 
 		for (var i = 1; i < authorsArray.length; i++) {
 			var fullNameArr = authorsArray[i].split(",");
 			var firstName = fullNameArr[1];
@@ -125,7 +128,12 @@ function mlaAuthorFormat(authorsArray) {
 	if (formattedAuthor.slice(-1) != ".") {
 		formattedAuthor += ".";
 	}
+
 	return [formattedAuthor, multipleAuthors];
+}
+
+function bibAuthorFormat(authorsArray) {
+	//do something
 }
 
 //apaEditorFormat edits editor data to fit APA citation style for inBook (first initials + last name)
@@ -234,7 +242,7 @@ function setTemplateLogic(citation) {
 	if (citation.authorKnown) {
 		var apaAuthors = apaAuthorFormat(citation.authors);
 		var mlaAuthors = mlaAuthorFormat(citation.authors);
-		citation.apaAuthors = apaAuthors;
+		citation.apaAuthors = apaAuthors[0];
 		citation.mlaAuthors = mlaAuthors[0];
 	}
 	if (pubtype === "book") {
@@ -261,21 +269,30 @@ function setTemplateLogic(citation) {
 		citation.apaTrans = apaTrans
 	}
 	else if (pubtype === "edited_book") {
+		var edStr;
 		citation.pubtypeEditedBook = true;
-		//var apaEdName = apaEditorFormat(citation.editor);
 		//if multipleAuthors, add Eds. beforehand
 		if (mlaAuthors[1]) {
-			mlaAuthors = "Eds. " + mlaAuthors[0];
-			citation.mlaAuthors = mlaAuthors;
+			edStr = "Eds. " + mlaAuthors[0];
+			citation.mlaAuthors = edStr;
 		}
 		else {
-			mlaAuthors = "Ed. " + mlaAuthors[0];
-			citation.mlaAuthors = mlaAuthors;
+			edStr = "Ed. " + mlaAuthors[0];
+			citation.mlaAuthors = edStr;
+		}
+		if (apaAuthors[1]) {
+			edStr = apaAuthors[0] + " (Eds.).";
+			citation.apaAuthors = edStr;
+		}
+		else {
+			edStr = apaAuthors[0] + " (Ed.).";
+			citation.apaAuthors = edStr;
 		}
 
 	}
 	else if (pubtype === "web_published") {
 		citation.pubtypeWebPublished = true;
+
 	}
 	else if (pubtype === "misc") {
 		citation.pubtypeMisc = true;
@@ -283,6 +300,10 @@ function setTemplateLogic(citation) {
 
 	else if (pubtype === "proceedings") {
 		citation.pubtypeProceedings = true;
+		var apaEdName = apaEditorFormat(citation.editor);
+		var mlaEdName = mlaEditorFormat(citation.editor);
+		citation.apaEds = apaEdName;
+		citation.mlaEds = mlaEdName;
 	}
 }
 
@@ -302,5 +323,6 @@ function citationTable(template, data) {
 
 var apa_template = $('#apa_template').html();
 var mla_template = $('#mla_template').html();
-citationTable(mla_template, data3);
+var bib_template = $('#bib_template').html();
+citationTable(bib_template, data3);
 
