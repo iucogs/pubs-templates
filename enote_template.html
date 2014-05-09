@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EndNote Citations</title>
+  <meta charset="utf-8"/>
+  <!-- Stylesheet Imports -->
+  <link rel="stylesheet" href="lib/css/bootstrap.min.css" />
+
+  <!-- Javascript Imports -->
+  <script src="lib/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+  <script src="lib/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="lib/js/mustache.js" type="text/javascript"></script>
+ </head>
+<body>	
+
+<!-- Endnote template -->
+<script id="enote_template" type="text/template">
+	<tr><td>
+	
+	<!-- pubtype Unknown -->
+	{{#pubtypeUnknown}}
+	%0 Unknown<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
+	%B {{#booktitle}}{{booktitle}}{{/booktitle}}{{^booktitle}}UNKNOWN{{/booktitle}}<br>
+	%P {{#pages}}{{pages}}{{/pages}}{{^pages}}UNKNOWN{{/pages}}<br>
+	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	%E {{#editor}}{{editor}}{{/editor}}{{^editor}}UNKNOWN{{/editor}}<br>
+	%C {{#location}}{{location}}{{/location}}{{^location}}UNKNOWN{{/location}}
+	{{/pubtypeUnknown}}
+
+	<!-- pubtype book -->
+	{{#pubtypeBook}}
+	%0 Book<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
+	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	%C {{#location}}{{location}}{{/location}}{{^location}}UNKNOWN{{/location}}
+	{{/pubtypeBook}}
+
+	<!-- pubtype article -->
+	{{#pubtypeArticle}}
+	%0 Journal Article<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
+	%J {{#journal}}{{journal}}{{/journal}}{{^journal}}UNKNOWN{{/journal}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	%V {{#volume}}{{volume}}{{/volume}}{{^volume}}UNKNOWN{{/volume}}<br>
+	%P {{#pages}}{{pages}}{{/pages}}{{^pages}}UNKNOWN{{/pages}}
+	{{/pubtypeArticle}}
+
+	<!-- pubtype inbook -->
+	{{#pubtypeInbook}}
+	%0 Book Section<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
+	%B {{#booktitle}}{{booktitle}}{{/booktitle}}{{^booktitle}}UNKNOWN{{/booktitle}}<br>
+	%P {{#pages}}{{pages}}{{/pages}}{{^pages}}UNKNOWN{{/pages}}<br>
+	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	%E {{#editor}}{{editor}}{{/editor}}{{^editor}}UNKNOWN{{/editor}}<br>
+	%C {{#location}}{{location}}{{/location}}{{^location}}UNKNOWN{{/location}}
+	{{/pubtypeInbook}}
+
+	<!-- pubtype translated_book -->
+	{{#pubtypeTransBook}}
+	%0 Trasnlated Book<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}} Trans. {{translator}}{{/title}}{{^title}}UNKNOWN TITLE Trans. {{translator}}{{/title}}<br>
+	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	%C {{#location}}{{location}}{{/location}}{{^location}}UNKNOWN{{/location}}	
+	{{/pubtypeTransBook}}
+
+	{{#pubtypeEditedBook}}
+	%0 Edited Book<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
+	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	%C {{#location}}{{location}}{{/location}}{{^location}}UNKNOWN{{/location}}
+	{{/pubtypeEditedBook}}
+
+	<!-- pubtype web_published -->
+	{{#pubtypeWebPublished}}
+	%0 Web<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	%U {{#url}}{{url}}{{/url}}{{^url}}UNKNOWN{{/url}}<br>	
+	{{/pubtypeWebPublished}}
+
+	<!-- pubtype proceedings -->
+	{{#pubtypeProceedings}}
+	%0 Proceedings<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
+	%P {{#pages}}{{pages}}{{/pages}}{{^pages}}UNKNOWN{{/pages}}<br>
+	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	%E {{#editor}}{{editor}}{{/editor}}{{^editor}}UNKNOWN{{/editor}}<br>
+	%C {{#location}}{{location}}{{/location}}{{^location}}UNKNOWN{{/location}}
+	{{/pubtypeProceedings}}
+
+	<!-- pubtype misc -->
+	{{#pubtypeMisc}}
+	%0 Generic<br>
+	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
+	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
+	{{/pubtypeMisc}}
+
+	</td></tr>
+</script>
+
+	<!-- Mustache template is rendered in this table -->
+	<table border="1" id="citation_table">
+	<script src="enote_template_logic.js" type="text/javascript"></script>
+	</table>
+
+</body>
+</html>

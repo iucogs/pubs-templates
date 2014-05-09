@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BibTeX Citations</title>
+  <meta charset="utf-8"/>
+  <!-- Stylesheet Imports -->
+  <link rel="stylesheet" href="lib/css/bootstrap.min.css" />
+
+  <!-- Javascript Imports -->
+  <script src="lib/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+  <script src="lib/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="lib/js/mustache.js" type="text/javascript"></script>
+ </head>
+<body>	
+
+<!-- Bibtex Mustache template -->
+<script id="bib_template" type="text/template">
+	<tr><td>
+	
+	<!-- pubtype unkwnown -->
+	{{#pubtypeUnknown}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#booktitle}}booktitle = "{{booktitle}}",<br>{{/booktitle}}{{^booktitle}}booktitle = " ",<br>{{/booktitle}}
+	{{#pages}}pages = "{{pages}}"<br>{{/pages}}{{^pages}}pages = " "<br>{{/pages}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#editor}}editor = "{{editor}}",<br>{{/editor}}{{^editor}}editor = " ",<br>{{/editor}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeUnknown}}
+
+	<!-- pubtype book -->
+	{{#pubtypeBook}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeBook}}
+
+	<!-- pubtype article -->
+	<!-- probably going to need another author format -->
+	{{#pubtypeArticle}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#journal}}journal = "{{journal}}",<br>{{/journal}}{{^journal}}journal = " ",<br>{{/journal}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#volume}}volume = "{{volume}}",<br>{{/volume}}{{^volume}}volume = " ",<br>{{/volume}}
+	{{#pages}}pages = "{{pages}}"<br>{{/pages}}{{^pages}}pages = " "<br>{{/pages}}
+	}
+	{{/pubtypeArticle}}
+
+	<!-- pubtype inbook -->
+	{{#pubtypeInbook}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#booktitle}}booktitle = "{{booktitle}}",<br>{{/booktitle}}{{^booktitle}}booktitle = " ",<br>{{/booktitle}}
+	{{#pages}}pages = "{{pages}}"<br>{{/pages}}{{^pages}}pages = " "<br>{{/pages}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#editor}}editor = "{{editor}}",<br>{{/editor}}{{^editor}}editor = " ",<br>{{/editor}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeInbook}}
+	
+	<!-- pubtype translated_book -->
+	{{#pubtypeTransBook}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}. Trans. {{translator}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeTransBook}}
+
+	<!-- pubtype edited_book -->
+	{{#pubtypeEditedBook}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}editor = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}editor = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	}
+	{{/pubtypeEditedBook}}
+
+	<!-- pubtype web_published -->
+	{{#pubtypeWebPublished}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#url}}url = "{{url}}"<br>{{/url}}{{^url}}url = " ",<br>{{/url}}
+	}
+	{{/pubtypeWebPublished}}
+
+	<!-- pubtype proceedings -->
+	{{#pubtypeProceedings}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#editor}}editor = "{{editor}}",<br>{{/editor}}{{^editor}}editor = " ",<br>{{/editor}}
+	{{#location}}location = "{{location}}"<br>{{/location}}{{^location}}location = " "<br>{{/location}}
+	{{#publisher}}publisher = "{{publisher}}",<br>{{/publisher}}{{^publisher}}publisher = " ",<br>{{/publisher}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{#pages}}pages = "{{pages}}"<br>{{/pages}}{{^pages}}pages = " "<br>{{/pages}}
+	{{/pubtypeProceedings}}
+
+	<!-- pubtype misc -->
+	{{#pubtypeMisc}}
+	@{{pubtype}}{ {{citation_id}},<br>
+	{{#authorKnown}}author = "{{authors}}",<br>{{/authorKnown}}{{^authorKnown}}author = " ",<br>{{/authorKnown}}
+	{{#title}}title = "{{title}}",<br>{{/title}}{{^title}}title = " ",<br>{{/title}}
+	{{#year}}year = "{{year}}",<br>{{/year}}{{^year}}year = " ",<br>{{/year}}
+	{{/pubtypeMisc}}
+
+	</td></tr>
+</script>
+
+	<!-- Mustache template is rendered in this table -->
+	<table border="1" id="citation_table">
+	<script src="bib_template_logic.js" type="text/javascript"></script>
+	</table>
+
+</body>
+</html>
