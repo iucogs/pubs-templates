@@ -20,7 +20,7 @@
 	<!-- pubtype Unknown -->
 	{{#pubtypeUnknown}}
 	%0 Unknown<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
 	%B {{#booktitle}}{{booktitle}}{{/booktitle}}{{^booktitle}}UNKNOWN{{/booktitle}}<br>
 	%P {{#pages}}{{pages}}{{/pages}}{{^pages}}UNKNOWN{{/pages}}<br>
@@ -33,7 +33,7 @@
 	<!-- pubtype book -->
 	{{#pubtypeBook}}
 	%0 Book<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
 	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
 	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
@@ -43,7 +43,7 @@
 	<!-- pubtype article -->
 	{{#pubtypeArticle}}
 	%0 Journal Article<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
 	%J {{#journal}}{{journal}}{{/journal}}{{^journal}}UNKNOWN{{/journal}}<br>
 	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
@@ -54,7 +54,7 @@
 	<!-- pubtype inbook -->
 	{{#pubtypeInbook}}
 	%0 Book Section<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
 	%B {{#booktitle}}{{booktitle}}{{/booktitle}}{{^booktitle}}UNKNOWN{{/booktitle}}<br>
 	%P {{#pages}}{{pages}}{{/pages}}{{^pages}}UNKNOWN{{/pages}}<br>
@@ -67,7 +67,7 @@
 	<!-- pubtype translated_book -->
 	{{#pubtypeTransBook}}
 	%0 Trasnlated Book<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}} Trans. {{translator}}{{/title}}{{^title}}UNKNOWN TITLE Trans. {{translator}}{{/title}}<br>
 	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
 	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
@@ -76,7 +76,7 @@
 
 	{{#pubtypeEditedBook}}
 	%0 Edited Book<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
 	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
 	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
@@ -86,7 +86,7 @@
 	<!-- pubtype web_published -->
 	{{#pubtypeWebPublished}}
 	%0 Web<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
 	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
 	%U {{#url}}{{url}}{{/url}}{{^url}}UNKNOWN{{/url}}<br>	
@@ -95,7 +95,7 @@
 	<!-- pubtype proceedings -->
 	{{#pubtypeProceedings}}
 	%0 Proceedings<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
 	%P {{#pages}}{{pages}}{{/pages}}{{^pages}}UNKNOWN{{/pages}}<br>
 	%I {{#publisher}}{{publisher}}{{/publisher}}{{^publisher}}UNKNOWN{{/publisher}}<br>
@@ -107,7 +107,7 @@
 	<!-- pubtype misc -->
 	{{#pubtypeMisc}}
 	%0 Generic<br>
-	%A {{#authorKnown}}{{authors}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
+	{{#authorKnown}}{{{enoteAuthors}}}{{/authorKnown}}{{^authorKnown}}UNKNOWN{{/authorKnown}}<br>
 	%T {{#title}}{{title}}{{/title}}{{^title}}UNKNOWN{{/title}}<br>
 	%D {{#year}}{{year}}{{/year}}{{^year}}UNKNOWN{{/year}}<br>
 	{{/pubtypeMisc}}
